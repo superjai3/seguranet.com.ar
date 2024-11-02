@@ -4,13 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const modelSelect = document.getElementById('model');
     const versionSelect = document.getElementById('version');
     const priceDisplay = document.getElementById('priceDisplay');
+    const sumaAseguradaInput = document.getElementById('sumaAsegurada');
     const getPriceButton = document.getElementById('getPrice');
+    const isNewContainer = document.getElementById('isNewContainer');
+
+    const currentYear = new Date().getFullYear();
 
     loadYears(); // Cargar años al inicio
 
     yearSelect.addEventListener('change', async () => {
         const year = yearSelect.value;
         if (year) {
+            // Mostrar u ocultar el campo "¿Es 0KM?" según el año seleccionado
+            const selectedYear = parseInt(year);
+            if (selectedYear === currentYear) {
+                isNewContainer.style.display = "block"; // Mostrar "¿Es 0KM?"
+            } else {
+                isNewContainer.style.display = "none"; // Ocultar "¿Es 0KM?"
+            }
+
             await loadBrands();
             modelSelect.disabled = true; // Deshabilitar modelos
             versionSelect.disabled = true; // Deshabilitar versiones
@@ -42,7 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const model = modelSelect.value;
         const version = versionSelect.value;
         const price = await getPrice(year, brand, model, version);
+
         priceDisplay.innerText = `Precio: $${price}`;
+
+        // Cálculo de la Suma Asegurada sugerida
+        const sumaAsegurada = price * 1.2; // Ejemplo: 20% más del precio como suma asegurada
+        sumaAseguradaInput.value = `$${sumaAsegurada.toFixed(2)}`;
     });
 
     getPriceButton.addEventListener('click', async () => {
@@ -51,7 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const model = modelSelect.value;
         const version = versionSelect.value;
         const price = await getPrice(year, brand, model, version);
+
         priceDisplay.innerText = `Precio: $${price}`;
+
+        // Cálculo de la Suma Asegurada sugerida
+        const sumaAsegurada = price * 1.2; // Ejemplo: 20% más del precio como suma asegurada
+        sumaAseguradaInput.value = `$${sumaAsegurada.toFixed(2)}`;
     });
 
     async function loadYears() {
@@ -72,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const attributes = await response.json();
             const brands = attributes.find(attr => attr.name.toLowerCase() === 'marca');
-            
+
             brandSelect.innerHTML = '<option value="">Selecciona una marca</option>'; // Opción predeterminada
             if (brands && brands.values.length > 0) {
                 brands.values.forEach(brand => {
@@ -154,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showNoVersionsPopup(year, brand, model) {
-        const message = `No tenemos disponible ninguna versión para cotizar para el Año: ${year}, Marca: ${brand}, Modelo: ${model}. Estamos trabajando para mejorar nuestras herramientas y en breve puedas cotizar también la versión que estas buscando.`;
+        const message = `No tenemos disponible ninguna versión para cotizar para el Año: ${year}, Marca: ${brand}, Modelo: ${model}. Estamos trabajando para mejorar nuestras herramientas y en breve puedas cotizar también la versión que estás buscando.`;
         alert(message); // Usamos un alert simple, pero puedes usar una librería de pop-ups si prefieres algo más estilizado
     }
 

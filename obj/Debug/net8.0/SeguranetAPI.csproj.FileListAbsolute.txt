@@ -40,3 +40,4 @@ C:\Proyectos\seguranetfinal\SeguranetAPI\bin\Debug\net8.0\Microsoft.Extensions.L
 C:\Proyectos\seguranetfinal\SeguranetAPI\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Proyectos\seguranetfinal\SeguranetAPI\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
 C:\Proyectos\seguranetfinal\SeguranetAPI\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Proyectos\seguranetfinal\SeguranetAPI\obj\Debug\net8.0\SeguranetAPI.sourcelink.json

@@ -39,6 +39,12 @@
             <option value="">Selecciona una versión</option> <!-- Opción predeterminada -->
         </select>
 
+        <!-- Nueva sección: Suma Asegurada -->
+        <div id="sumaAseguradaContainer">
+            <label id="sumaAseguradaContainer" for="sumaAsegurada">Suma Asegurada:</label>
+            <input type="text" id="sumaAsegurada" readonly placeholder="Calculada automáticamente">
+        </div>
+
         <!-- Campo condicional para "Es 0KM?" -->
         <div id="isNewContainer" style="display: none;">
             <label for="isNew">¿Es 0KM?</label>
@@ -90,19 +96,7 @@
     </div>
 
     <script src="../js/script.js"></script> <!-- Ajuste de la ruta -->
-    <script>
-        // Lógica para mostrar o esconder el campo "¿Es 0KM?" dependiendo del año seleccionado
-        document.getElementById("year").addEventListener("change", function () {
-            const selectedYear = parseInt(this.value);
-            const isNewContainer = document.getElementById("isNewContainer");
 
-            if (selectedYear === currentYear) {
-                isNewContainer.style.display = "block"; // Mostrar "¿Es 0KM?"
-            } else {
-                isNewContainer.style.display = "none";  // Ocultar "¿Es 0KM?"
-            }
-        });
-    </script>
 </body>
 
 </html>
