@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "4qgzCSGIT+qULae6Ctj5F+ZaNpt1Sw4DeOm5kBCKtjc=",
+  "Source": "SeguranetAPI",
+  "BasePath": "_content/SeguranetAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

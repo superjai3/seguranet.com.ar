@@ -1,0 +1,6 @@
+@SeguranetAPI_HostAddress = http://localhost:5247
+
+GET {{SeguranetAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

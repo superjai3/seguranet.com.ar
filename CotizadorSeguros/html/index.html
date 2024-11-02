@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador de Autos</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Ajuste de la ruta -->
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cotizador de Autos</h1>
+
+        <label for="year">Selecciona el Año:</label>
+        <select id="year">
+            <option value="">Selecciona un año</option> <!-- Opción predeterminada -->
+            <!-- Opciones de años desde 1974 hasta 2024 -->
+            <script>
+                const currentYear = new Date().getFullYear();
+                for (let year = currentYear; year >= 1974; year--) {
+                    document.write(`<option value="${year}">${year}</option>`);
+                }
+            </script>
+        </select>
+
+        <label for="brand">Selecciona la Marca:</label>
+        <select id="brand" disabled>
+            <option value="">Selecciona una marca</option> <!-- Opción predeterminada -->
+        </select>
+
+        <label for="model">Selecciona el Modelo:</label>
+        <select id="model" disabled>
+            <option value="">Selecciona un modelo</option> <!-- Opción predeterminada -->
+        </select>
+
+        <label for="version">Selecciona la Versión:</label>
+        <select id="version" disabled>
+            <option value="">Selecciona una versión</option> <!-- Opción predeterminada -->
+        </select>
+
+        <!-- Campo condicional para "Es 0KM?" -->
+        <div id="isNewContainer" style="display: none;">
+            <label for="isNew">¿Es 0KM?</label>
+            <select id="isNew">
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <!-- Otros campos para la cotización -->
+        <label for="gnc">¿Tiene equipo de GNC?</label>
+        <select id="gnc">
+            <option value="yes">Sí</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="tracking">¿Tiene equipo de Rastreo?</label>
+        <select id="tracking">
+            <option value="yes">Sí</option>
+            <option value="no">No</option>
+        </select>
+
+        <label for="adjustmentClause">Cláusula de Ajuste deseada:</label>
+        <select id="adjustmentClause">
+            <option value="15">15%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+            <option value="40">40%</option>
+            <option value="50">50%</option>
+        </select>
+
+        <label for="vehicleUse">Uso del vehículo:</label>
+        <select id="vehicleUse">
+            <option value="personal">Uso Particular</option>
+            <option value="commercial">Uso Comercial</option>
+        </select>
+
+        <label for="coverageType">Cobertura que desea contratar:</label>
+        <select id="coverageType">
+            <option value="planA">Solo RC (Plan A)</option>
+            <option value="planB">Todo Total (Plan B)</option>
+            <option value="planC">Terceros Completo (Plan C)</option>
+            <option value="planD">Todo Riesgo (Plan D)</option>
+        </select>
+
+        <button id="getPrice" disabled>Cotizar</button>
+
+        <div id="priceDisplay"></div>
+    </div>
+
+    <script src="../js/script.js"></script> <!-- Ajuste de la ruta -->
+    <script>
+        // Lógica para mostrar o esconder el campo "¿Es 0KM?" dependiendo del año seleccionado
+        document.getElementById("year").addEventListener("change", function () {
+            const selectedYear = parseInt(this.value);
+            const isNewContainer = document.getElementById("isNewContainer");
+
+            if (selectedYear === currentYear) {
+                isNewContainer.style.display = "block"; // Mostrar "¿Es 0KM?"
+            } else {
+                isNewContainer.style.display = "none";  // Ocultar "¿Es 0KM?"
+            }
+        });
+    </script>
+</body>
+
+</html>
