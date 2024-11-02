@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f3f7;
+    background-color: #859bf3;
     color: #343a40;
     margin: 0;
     padding: 20px;
@@ -10,7 +10,7 @@ body {
     max-width: 700px;
     margin: auto;
     padding: 20px;
-    background: #ffffff;
+    background: #b6f5d8;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -67,8 +67,7 @@ button:hover {
 #sumaAseguradaContainer {
     color: red;
     font-size: larger;
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 #sumaAsegurada {
@@ -80,4 +79,15 @@ button:hover {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+#priceDisplay{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#priceDisplayFinal{
+    color:#28a745;
+    font-size: 20px;
+    font-weight: bold;
 }

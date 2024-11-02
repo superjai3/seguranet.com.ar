@@ -7,22 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const sumaAseguradaInput = document.getElementById('sumaAsegurada');
     const getPriceButton = document.getElementById('getPrice');
     const isNewContainer = document.getElementById('isNewContainer');
+    const isNewSelect = document.getElementById('isNew');
 
-    const currentYear = new Date().getFullYear();
+    let baseValueFixed = null; // Variable para almacenar la suma asegurada fija
+
+    // Lógica para mostrar u ocultar el campo "¿Es 0KM?" dependiendo del año seleccionado
+    yearSelect.addEventListener("change", function () {
+        const selectedYear = parseInt(this.value);
+        const currentYear = new Date().getFullYear();
+
+        if (selectedYear === currentYear) {
+            isNewContainer.style.display = "block"; // Mostrar "¿Es 0KM?"
+        } else {
+            isNewContainer.style.display = "none"; // Ocultar "¿Es 0KM?"
+            isNewSelect.value = "no"; // Reiniciar la selección a "no"
+        }
+    });
 
     loadYears(); // Cargar años al inicio
 
     yearSelect.addEventListener('change', async () => {
         const year = yearSelect.value;
         if (year) {
-            // Mostrar u ocultar el campo "¿Es 0KM?" según el año seleccionado
-            const selectedYear = parseInt(year);
-            if (selectedYear === currentYear) {
-                isNewContainer.style.display = "block"; // Mostrar "¿Es 0KM?"
-            } else {
-                isNewContainer.style.display = "none"; // Ocultar "¿Es 0KM?"
-            }
-
             await loadBrands();
             modelSelect.disabled = true; // Deshabilitar modelos
             versionSelect.disabled = true; // Deshabilitar versiones
@@ -53,27 +59,69 @@ document.addEventListener('DOMContentLoaded', () => {
         const brand = brandSelect.value;
         const model = modelSelect.value;
         const version = versionSelect.value;
-        const price = await getPrice(year, brand, model, version);
 
-        priceDisplay.innerText = `Precio: $${price}`;
+        if (version) {
+            const price = await getPrice(year, brand, model, version);
+            priceDisplay.innerText = `Precio Base sin Adicionales: $${price}`;
 
-        // Cálculo de la Suma Asegurada sugerida
-        const sumaAsegurada = price * 1.2; // Ejemplo: 20% más del precio como suma asegurada
-        sumaAseguradaInput.value = `$${sumaAsegurada.toFixed(2)}`;
+            // Calcular y fijar la Suma Asegurada
+            const sumaAsegurada = price * 1.2; // Ejemplo: 20% más del precio como suma asegurada
+            sumaAseguradaInput.value = `$${sumaAsegurada.toFixed(2)}`;
+            baseValueFixed = sumaAsegurada; // Guardar la suma asegurada fija
+        }
     });
 
-    getPriceButton.addEventListener('click', async () => {
-        const year = yearSelect.value;
-        const brand = brandSelect.value;
-        const model = modelSelect.value;
-        const version = versionSelect.value;
-        const price = await getPrice(year, brand, model, version);
+    getPriceButton.addEventListener('click', () => {
+        if (baseValueFixed === null) {
+            alert('Por favor, seleccione primero la versión para obtener la Suma Asegurada.');
+            return;
+        }
 
-        priceDisplay.innerText = `Precio: $${price}`;
+        // Variables para el cálculo del precio final
+        let finalPrice = baseValueFixed;
+        const year = parseInt(yearSelect.value);
+        const is0KM = isNewSelect.value === 'yes';
+        const hasGNC = document.getElementById('gnc').value === 'yes';
+        const hasTracking = document.getElementById('tracking').value === 'yes';
+        const adjustmentClause = parseInt(document.getElementById('adjustmentClause').value);
+        const vehicleUse = document.getElementById('vehicleUse').value;
+        const coveragePlan = document.getElementById('coverageType').value;
 
-        // Cálculo de la Suma Asegurada sugerida
-        const sumaAsegurada = price * 1.2; // Ejemplo: 20% más del precio como suma asegurada
-        sumaAseguradaInput.value = `$${sumaAsegurada.toFixed(2)}`;
+        // Cálculo de depreciación por año
+        const currentYear = new Date().getFullYear();
+        const age = currentYear - year;
+        const depreciation = (age > 0) ? 0.02 * age : 0; // Depreciación del 2% por año
+        finalPrice -= finalPrice * depreciation;
+
+        // Aplicar factores adicionales
+        if (is0KM) finalPrice += finalPrice * 0.10; // 10% extra por ser 0KM
+        if (hasGNC) finalPrice += finalPrice * 0.05; // 5% extra por tener GNC
+        if (hasTracking) finalPrice -= finalPrice * 0.03; // 3% descuento por equipo de rastreo
+
+        // Ajuste por cláusula de ajuste
+        finalPrice += finalPrice * (adjustmentClause / 100);
+
+        // Ajuste por uso del vehículo
+        if (vehicleUse === 'commercial') finalPrice += finalPrice * 0.15; // 15% extra por uso comercial
+
+        // Ajuste según el plan de cobertura
+        switch (coveragePlan) {
+            case 'planA':
+                finalPrice += 0; // Sin costo adicional
+                break;
+            case 'planB':
+                finalPrice += finalPrice * 0.20; // 20% extra para "Todo Total"
+                break;
+            case 'planC':
+                finalPrice += finalPrice * 0.35; // 35% extra para "Terceros Completo"
+                break;
+            case 'planD':
+                finalPrice += finalPrice * 0.50; // 50% extra para "Todo Riesgo"
+                break;
+        }
+
+        // Mostrar el precio final calculado
+        priceDisplayFinal.innerText = `Precio Final del Seguro: $${finalPrice.toFixed(2)}`;
     });
 
     async function loadYears() {
@@ -167,22 +215,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 versionSelect.disabled = false; // Habilitar el select de versiones
             } else {
                 versionSelect.disabled = true; // Deshabilitar si no hay opciones
-                showNoVersionsPopup(year, brand, model); // Mostrar pop-up si no hay versiones
             }
         } catch (error) {
             console.error('Error al cargar las versiones:', error);
-            alert(`Error al cargar las versiones: ${error.message}`);
+            alert('Error al cargar las versiones');
         }
     }
 
-    function showNoVersionsPopup(year, brand, model) {
-        const message = `No tenemos disponible ninguna versión para cotizar para el Año: ${year}, Marca: ${brand}, Modelo: ${model}. Estamos trabajando para mejorar nuestras herramientas y en breve puedas cotizar también la versión que estás buscando.`;
-        alert(message); // Usamos un alert simple, pero puedes usar una librería de pop-ups si prefieres algo más estilizado
-    }
-
     async function getPrice(year, brand, model, version) {
-        // Aquí iría tu lógica para obtener el precio
-        // Este es un ejemplo ficticio
-        return Math.floor(Math.random() * 20000) + 10000; // Precio aleatorio entre 10,000 y 30,000
+        try {
+            const mockPrice = Math.floor(Math.random() * (50000 - 20000 + 1) + 20000); // Generar un precio ficticio entre $20,000 y $50,000
+            return mockPrice;
+        } catch (error) {
+            console.error('Error al obtener el precio:', error);
+            alert('Error al obtener el precio');
+            return 0;
+        }
     }
 });

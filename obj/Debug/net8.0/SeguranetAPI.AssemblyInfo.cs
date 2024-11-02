@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SeguranetAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7f5d4f2d6323acefe6524d57adcb9aadcd54dced")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1af05a0764f85e445a8275a739e757c0814f0f2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SeguranetAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SeguranetAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
