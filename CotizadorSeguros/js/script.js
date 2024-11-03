@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (version) {
             const price = await getPrice(year, brand, model, version);
-            priceDisplay.innerText = `Precio Base sin Adicionales: $${price}`;
+            priceDisplay.innerText = `Precio Base sin Adicionales: $${price/10}`;
 
             // Calcular y fijar la Suma Asegurada
-            const sumaAsegurada = price * 1.2; // Ejemplo: 20% más del precio como suma asegurada
+            const sumaAsegurada = price * 1.2 * 10; // Ejemplo: 20% más del precio como suma asegurada
             sumaAseguradaInput.value = `$${sumaAsegurada.toFixed(2)}`;
             baseValueFixed = sumaAsegurada; // Guardar la suma asegurada fija
         }
@@ -120,8 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
 
+        finalPrice1 = finalPrice/4
+
         // Mostrar el precio final calculado
-        priceDisplayFinal.innerText = `Precio Final del Seguro: $${finalPrice.toFixed(2)}`;
+        priceDisplayFinalMensual.innerText = `Precio Final del Seguro (Mensual - 1 Cuota): $${((finalPrice1)/10).toFixed(2)}`;
+        priceDisplayFinalSemestral.innerText = `Precio Final del Seguro (Semestral - 5 Cuotas): $${((finalPrice1)/2).toFixed(2)}`;
+        priceDisplayFinalAnual.innerText = `Precio Final del Seguro (Anual - 10 Cuotas): $${(finalPrice1).toFixed(2)}`;
     });
 
     async function loadYears() {

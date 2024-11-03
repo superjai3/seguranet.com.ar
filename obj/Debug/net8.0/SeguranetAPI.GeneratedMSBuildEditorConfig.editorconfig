@@ -17,3 +17,67 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Proyectos\seguranetfinal\SeguranetAPI
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/Ayuda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcQXl1ZGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/Coberturas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcQ29iZXJ0dXJhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/Contacto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcQ29udGFjdG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/CotizadorAuto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcQ290aXphZG9yQXV0by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/Nosotros.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcTm9zb3Ryb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/Preguntas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcUHJlZ3VudGFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Home/Siniestros.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEhvbWVcU2luaWVzdHJvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Inicio/Actualizar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEluaWNpb1xBY3R1YWxpemFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Inicio/Confirmar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEluaWNpb1xDb25maXJtYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Inicio/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEluaWNpb1xMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Inicio/Registrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEluaWNpb1xSZWdpc3RyYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Inicio/Restablecer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXEluaWNpb1xSZXN0YWJsZWNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXFNoYXJlZFxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/seguranetfinal/SeguranetAPI/AppWeb/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXBwV2ViXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
